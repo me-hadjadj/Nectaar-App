@@ -23,7 +23,7 @@ function MyHomeScreen(props) {
       var userToken = JSON.parse(rawUserToken);
       if (userToken) {
         var rawResponse = await fetch(
-          "http://192.168.1.22:3000/users/getUserByToken",
+          "https://warm-ocean-55850.herokuapp.com/users/getUserByToken",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },

@@ -56,7 +56,7 @@ function EventScreen(props) {
     async function checkIfLiked() {
       if (props.displayToken) {
         let rawResponse = await fetch(
-          "http://192.168.1.22:3000/wishlist/getWishlist",
+          "https://warm-ocean-55850.herokuapp.com/wishlist/getWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -126,7 +126,7 @@ function EventScreen(props) {
     if (token) {
       if (!isLiked) {
         let rawResponse = await fetch(
-          "http://192.168.1.22:3000/wishlist/addToWishlist",
+          "https://warm-ocean-55850.herokuapp.com/wishlist/addToWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -139,7 +139,7 @@ function EventScreen(props) {
         }
       } else {
         let rawResponse = await fetch(
-          "http://192.168.1.22:3000/wishlist/deleteFromWishlist",
+          "https://warm-ocean-55850.herokuapp.com/wishlist/deleteFromWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -158,7 +158,7 @@ function EventScreen(props) {
     if (props.displayToken) {
       if (props.user.ticketsRemaining > counter) {
         var rawResponse = await fetch(
-          "http://192.168.1.22:3000/events/addReservation",
+          "https://warm-ocean-55850.herokuapp.com/events/addReservation",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },

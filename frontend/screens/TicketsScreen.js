@@ -37,7 +37,7 @@ function TicketsScreen(props) {
       //Fonction qui va récupérer les évènements à venir au lancement du composant
       async function getReservationList() {
         var rawResponse = await fetch(
-          "http://192.168.1.22:3000/events/getReservationList",
+          "https://warm-ocean-55850.herokuapp.com/events/getReservationList",
           {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },

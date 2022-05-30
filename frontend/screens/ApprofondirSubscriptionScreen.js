@@ -18,7 +18,7 @@ import { Card } from "react-native-paper";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
-const ip = "192.168.1.22";
+const ip = "warm-ocean-55850.herokuapp.com";
 
 function ApprofondirSubscription(props) {
   //Import des polices
@@ -32,7 +32,7 @@ function ApprofondirSubscription(props) {
   let saveThisSubscription = async () => {
     let subscriptionTitle = "Approfondir";
     let rawResponse = await fetch(
-      `http://${ip}:3000/users/saveThisSubscription`,
+      `https://${ip}/users/saveThisSubscription`,
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

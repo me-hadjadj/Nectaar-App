@@ -141,7 +141,9 @@ function App(props) {
 
   //On récupère tout les events lié à la categorie sélectionnée au premier écran
   async function getEvents() {
-    var rawEvents = await fetch("http://192.168.1.22:3000/events/getEvents");
+    var rawEvents = await fetch(
+      "https://warm-ocean-55850.herokuapp.com/events/getEvents"
+    );
     var getEvents = await rawEvents.json();
     setAllEvents(getEvents);
     //Tableau qui va contenir les tags tout event confondu

@@ -24,8 +24,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
-
-const ip = "192.168.1.22";
+const ip = "warm-ocean-55850.herokuapp.com";
 
 function Login(props) {
   useEffect(() => {
@@ -49,7 +48,7 @@ function Login(props) {
   const [listErrorsSignin, setErrorsSignin] = useState([]);
 
   var handleSubmitSignin = async () => {
-    const data = await fetch(`http://${ip}:3000/users/sign-in`, {
+    const data = await fetch(`https://${ip}/users/sign-in`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `emailFromFront=${signInEmail}&passwordFromFront=${signInPassword}`,

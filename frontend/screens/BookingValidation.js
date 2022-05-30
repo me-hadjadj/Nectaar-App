@@ -44,7 +44,7 @@ function BookingValidation(props) {
     async function checkIfLiked() {
       if (props.displayToken) {
         let rawResponse = await fetch(
-          "http://192.168.1.22:3000/wishlist/getWishlist",
+          "https://warm-ocean-55850.herokuapp.com/wishlist/getWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -75,7 +75,7 @@ function BookingValidation(props) {
     if (token) {
       if (!isLiked) {
         let rawResponse = await fetch(
-          "http://192.168.1.22:3000/wishlist/addToWishlist",
+          "https://warm-ocean-55850.herokuapp.com/wishlist/addToWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -88,7 +88,7 @@ function BookingValidation(props) {
         }
       } else {
         let rawResponse = await fetch(
-          "http://192.168.1.22:3000/wishlist/deleteFromWishlist",
+          "https://warm-ocean-55850.herokuapp.com/wishlist/deleteFromWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },

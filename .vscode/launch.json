@@ -1,0 +1,10 @@
+{
+  "configurations": [
+    {
+      "type": "pwa-chrome",
+      "name": "http://arcane-woodland-51182.herokuapp.com/users/sign-in",
+      "request": "launch",
+      "url": "http://arcane-woodland-51182.herokuapp.com/users/sign-in"
+    }
+  ]
+}

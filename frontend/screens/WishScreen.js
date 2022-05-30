@@ -27,7 +27,7 @@ function WishScreen(props) {
   async function getWishlist() {
     console.log("useeffect getwishlist");
     var rawResponse = await fetch(
-      "http://192.168.1.22:3000/wishlist/getWishlist",
+      "https://warm-ocean-55850.herokuapp.com/wishlist/getWishlist",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -70,7 +70,7 @@ function WishScreen(props) {
   //Fonction qui va supprimer un evenement de la wishlist
   var deleteFromWishlist = async (eventId) => {
     var rawResponse = await fetch(
-      "http://192.168.1.22:3000/wishlist/deleteFromWishlist",
+      "https://warm-ocean-55850.herokuapp.com/wishlist/deleteFromWishlist",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },

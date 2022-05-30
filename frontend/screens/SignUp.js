@@ -19,7 +19,7 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { connect } from "react-redux";
 
-const ip = "192.168.1.22";
+const ip = "warm-ocean-55850.herokuapp.com";
 
 function Signup(props) {
   const { firstname, lastname, email } = props.route.params
@@ -54,7 +54,7 @@ function Signup(props) {
   const [listErrorsSignup, setErrorsSignup] = useState([]);
 
   var handleSubmitSignup = async () => {
-    const data = await fetch(`http://${ip}:3000/users/sign-up`, {
+    const data = await fetch(`https://${ip}/users/sign-up`, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `firstnameFromFront=${signUpFirstname}&lastnameFromFront=${signUpLastname}&emailFromFront=${signUpEmail}&passwordFromFront=${signUpPassword}`,
