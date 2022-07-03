@@ -19,13 +19,12 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import { connect } from "react-redux";
 
-const ip = "warm-ocean-55850.herokuapp.com";
+const ip = "backend-nectaar-app.herokuapp.com";
 
 function Signup(props) {
   const { firstname, lastname, email } = props.route.params
     ? props.route.params
     : "";
-
 
   useEffect(() => {
     //Fonction qui retourne sur le screen Login avec un état de navigation
@@ -59,7 +58,6 @@ function Signup(props) {
 
     const body = await data.json();
 
-
     if (body.result == true) {
       props.addToken(body.saveUser.token);
       props.saveUserInfo({
@@ -69,7 +67,7 @@ function Signup(props) {
         renewalDate: body.saveUser.subscription.dateOfSubscription,
         email: body.saveUser.email,
       });
-    
+
       props.navigation.navigate("Compte", {
         screen: "subscriptionChoice",
       });

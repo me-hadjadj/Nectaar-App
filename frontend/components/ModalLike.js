@@ -20,10 +20,9 @@ import { Ionicons } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
-const ip = "warm-ocean-55850.herokuapp.com";
+const ip = "backend-nectaar-app.herokuapp.com";
 
 function ModalLike(props) {
-
   //Import des polices
   const [fontsLoaded] = Font.useFonts({
     "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
@@ -303,7 +302,7 @@ function ModalLike(props) {
     if (props.displayToken) {
       if (props.user.ticketsRemaining >= 0) {
         var rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/events/getReservationList",
+          "https://backend-nectaar-app.herokuapp.com/events/getReservationList",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -314,7 +313,7 @@ function ModalLike(props) {
         var allReservation = response.user.reservation;
 
         var longTab = allReservation.length - 1;
-   
+
         // Récuperer la dernière réservation
         var lastReservation = allReservation[longTab];
         setMyRatingSavedFromBack(lastReservation.myRating);
@@ -326,18 +325,15 @@ function ModalLike(props) {
 
         var dateToDisplay = moment(lastReservation.idEvents.dates);
 
-
         // Faire appel a une date en français
         moment.locale("fr");
         var frenchDate = dateToDisplay.format("LL");
-  
 
         //Set la date à afficher au format (DD mois YYYY) (ex 24 mai 2022)
         setDateLastReservation(frenchDate);
 
         //Set la date actuelle
         let dateNow = moment().format();
-
 
         //Set la date de dernière réservation
         var dateOfLastReservation = lastReservation.idEvents.dates;
@@ -347,7 +343,7 @@ function ModalLike(props) {
         var getDifferenceInDays =
           Math.abs(new Date(dateNow) - new Date(dateOfLastReservation)) /
           (1000 * 60 * 60 * 24);
-    
+
         setDifferenceBetweenDate(getDifferenceInDays);
       }
     }
@@ -377,7 +373,6 @@ function ModalLike(props) {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
 
   // Condition que la modal s'affiche pour la 1er fois pendant la session (store) & que la difference entre les deux dates est sup. à 1 jours & que l'event est déja passé
   if (
@@ -456,7 +451,7 @@ const styles = StyleSheet.create({
   },
   textStyleButton: {
     fontFamily: "BowlbyOne-Regular",
-    textAlign:'center',
+    textAlign: "center",
     color: "black",
     fontSize: 22,
   },

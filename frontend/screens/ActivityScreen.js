@@ -32,19 +32,16 @@ import { FontAwesome } from "@expo/vector-icons";
 import moment from "moment";
 import "moment/locale/fr";
 
-
 const window = Dimensions.get("window");
 
 function App(props) {
-   //Import des polices
-   const [fontsLoaded] = Font.useFonts({
+  //Import des polices
+  const [fontsLoaded] = Font.useFonts({
     "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
     "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
     "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
     "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
   });
-
-
 
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -143,7 +140,7 @@ function App(props) {
   //On récupère tout les events lié à la categorie sélectionnée au premier écran
   async function getEvents() {
     var rawEvents = await fetch(
-      "https://warm-ocean-55850.herokuapp.com/events/getEvents"
+      "https://backend-nectaar-app.herokuapp.com/events/getEvents"
     );
     var getEvents = await rawEvents.json();
     setAllEvents(getEvents);
@@ -310,9 +307,7 @@ function App(props) {
         );
       });
       setSelectedEvents(selectedEventsByDate);
-  
     } else {
-
       var selectedEventsByDate = selectedEvents.filter((elt) => {
         return (
           new Date(elt.dates).toLocaleDateString() === date.toLocaleDateString()
@@ -412,7 +407,7 @@ function App(props) {
       );
       eventsByTags.sort((a, b) => a.dates > b.dates);
       setSelectedEvents(eventsByTags);
- 
+
       let currentRegion = {
         latitude: eventsByTags[0].latitude,
         longitude: eventsByTags[0].longitude,
@@ -826,7 +821,6 @@ function App(props) {
                           }),
                         2500
                       );
-
                     }
                   }}
                   onLayout={(event) => {

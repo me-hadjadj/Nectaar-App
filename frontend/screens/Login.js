@@ -23,7 +23,7 @@ import { FontAwesome5 } from "@expo/vector-icons";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
-const ip = "warm-ocean-55850.herokuapp.com";
+const ip = "backend-nectaar-app.herokuapp.com";
 
 function Login(props) {
   useEffect(() => {
@@ -60,7 +60,7 @@ function Login(props) {
         // console.log("Avant la sauvegarde en LOCALSTORAGE");
         AsyncStorage.setItem("token", JSON.stringify(body.user.token));
       }
-      
+
       props.addToken(body.user.token);
       props.saveUserInfo({
         firstname: body.user.firstname,

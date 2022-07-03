@@ -17,15 +17,13 @@ import { connect } from "react-redux";
 import ModalLike from "../components/ModalLike";
 
 function MyHomeScreen(props) {
-
-  
   useEffect(() => {
     async function getUserInfos() {
       var rawUserToken = await AsyncStorage.getItem("token");
       var userToken = JSON.parse(rawUserToken);
       if (userToken) {
         var rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/users/getUserByToken",
+          "https://backend-nectaar-app.herokuapp.com/users/getUserByToken",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -34,7 +32,6 @@ function MyHomeScreen(props) {
         );
         var response = await rawResponse.json();
         if (response.result) {
-          
           props.addToken(response.user.token);
           props.saveUserInfo({
             firstname: response.user.firstname,
@@ -50,19 +47,17 @@ function MyHomeScreen(props) {
     getUserInfos();
   }, []);
 
- //Import des polices
- const [fontsLoaded] = Font.useFonts({
-  "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
-  "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
-  "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
-  "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
-});
-
+  //Import des polices
+  const [fontsLoaded] = Font.useFonts({
+    "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
+    "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
+    "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
+    "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
+  });
 
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
 
   var stateModalike;
   //Vérification du token pour afficher la Modal pour la notation

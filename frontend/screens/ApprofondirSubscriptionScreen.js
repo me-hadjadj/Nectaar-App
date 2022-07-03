@@ -15,28 +15,25 @@ import { Card } from "react-native-paper";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
-const ip = "warm-ocean-55850.herokuapp.com";
+const ip = "backend-nectaar-app.herokuapp.com";
 
 function ApprofondirSubscription(props) {
-    //Import des polices
-    const [fontsLoaded] = Font.useFonts({
-      "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
-      "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
-      "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
-      "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
-    });
+  //Import des polices
+  const [fontsLoaded] = Font.useFonts({
+    "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
+    "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
+    "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
+    "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
+  });
 
   //Fonction qui va sauvegarder le type d'abonnement sur le user en cours
   let saveThisSubscription = async () => {
     let subscriptionTitle = "Approfondir";
-    let rawResponse = await fetch(
-      `https://${ip}/users/saveThisSubscription`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `subscriptionTitleFromFront=${subscriptionTitle}&token=${props.token}`,
-      }
-    );
+    let rawResponse = await fetch(`https://${ip}/users/saveThisSubscription`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `subscriptionTitleFromFront=${subscriptionTitle}&token=${props.token}`,
+    });
     let response = await rawResponse.json();
     if (response.result) {
       props.updateTicketsWithSub(response.user.NumberOfPlacesHave);

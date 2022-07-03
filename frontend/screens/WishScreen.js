@@ -24,7 +24,7 @@ function WishScreen(props) {
   //Fonction qui va récupérer la wishlist au lancement du composant
   async function getWishlist() {
     var rawResponse = await fetch(
-      "https://warm-ocean-55850.herokuapp.com/wishlist/getWishlist",
+      "https://backend-nectaar-app.herokuapp.com/wishlist/getWishlist",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -59,7 +59,7 @@ function WishScreen(props) {
   //Fonction qui va supprimer un evenement de la wishlist
   var deleteFromWishlist = async (eventId) => {
     var rawResponse = await fetch(
-      "https://warm-ocean-55850.herokuapp.com/wishlist/deleteFromWishlist",
+      "https://backend-nectaar-app.herokuapp.com/wishlist/deleteFromWishlist",
       {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -73,7 +73,6 @@ function WishScreen(props) {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
 
   //ajout de la condition pour colorer le like
   if (props.eventLiked) {
@@ -204,8 +203,7 @@ function WishScreen(props) {
                           alignItems="center"
                           marginTop={5}
                           marginRight={7}
-                        >
-                        </View>
+                        ></View>
                       </View>
                     </View>
                   </Card>

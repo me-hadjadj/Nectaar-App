@@ -18,19 +18,19 @@ import AppLoading from "expo-app-loading";
 import { connect } from "react-redux";
 
 function MyPastReservations(props) {
- //Import des polices
- const [fontsLoaded] = Font.useFonts({
-  "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
-  "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
-  "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
-  "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
-});
+  //Import des polices
+  const [fontsLoaded] = Font.useFonts({
+    "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
+    "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
+    "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
+    "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
+  });
 
   useEffect(() => {
     //Fonction qui va récupérer les évènements passés au lancement du composant
     async function getReservationList() {
       var rawResponse = await fetch(
-        "https://warm-ocean-55850.herokuapp.com/events/getReservationList",
+        "https://backend-nectaar-app.herokuapp.com/events/getReservationList",
         {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -47,7 +47,7 @@ function MyPastReservations(props) {
           return true;
         }
       });
- 
+
       setUserReservationList(pastreservation);
     }
     getReservationList();
@@ -59,7 +59,6 @@ function MyPastReservations(props) {
   if (!fontsLoaded) {
     return <AppLoading />;
   }
-
 
   return (
     <View style={styles.container}>
@@ -139,7 +138,6 @@ function MyPastReservations(props) {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

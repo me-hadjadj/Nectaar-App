@@ -23,7 +23,6 @@ import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 import React, { useState, useRef } from "react";
 
-
 function BookingValidation(props) {
   const [isLiked, setIsLiked] = useState(false);
 
@@ -31,7 +30,7 @@ function BookingValidation(props) {
     async function checkIfLiked() {
       if (props.displayToken) {
         let rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/wishlist/getWishlist",
+          "https://backend-nectaar-app.herokuapp.com/wishlist/getWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -62,7 +61,7 @@ function BookingValidation(props) {
     if (token) {
       if (!isLiked) {
         let rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/wishlist/addToWishlist",
+          "https://backend-nectaar-app.herokuapp.com/wishlist/addToWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -75,7 +74,7 @@ function BookingValidation(props) {
         }
       } else {
         let rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/wishlist/deleteFromWishlist",
+          "https://backend-nectaar-app.herokuapp.com/wishlist/deleteFromWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -116,7 +115,6 @@ function BookingValidation(props) {
     "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
   });
 
-  
   //Convertion de la date au format XX mois XXXX en français
   var dateToDisplay = moment(dates);
   moment.locale("fr");

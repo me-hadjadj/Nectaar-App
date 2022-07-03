@@ -39,13 +39,11 @@ function EventScreen(props) {
   const [isLiked, setIsLiked] = useState(false);
   const [counter, setCounter] = useState(1);
 
-
-
   useEffect(() => {
     async function checkIfLiked() {
       if (props.displayToken) {
         let rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/wishlist/getWishlist",
+          "https://backend-nectaar-app.herokuapp.com/wishlist/getWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -103,20 +101,20 @@ function EventScreen(props) {
     setTimeout(() => refBottom.current.scrollToEnd({ animated: true }), 300);
     setHours("16:00");
   };
-//Import des polices
-const [fontsLoaded] = Font.useFonts({
-  "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
-  "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
-  "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
-  "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
-});
+  //Import des polices
+  const [fontsLoaded] = Font.useFonts({
+    "Poppins-Bold": require("../assets/fonts/poppins/Poppins-Bold.otf"),
+    "Poppins-SemiBold": require("../assets/fonts/poppins/Poppins-SemiBold.otf"),
+    "Poppins-Regular": require("../assets/fonts/poppins/Poppins-Regular.otf"),
+    "BowlbyOne-Regular": require("../assets/fonts/bowlby-one-sc/BowlbyOne-Regular.ttf"),
+  });
 
   //Fonction qui va rajouter l'event dans la wishlist sur on clique sur le coeur
   let addToWishlist = async () => {
     if (token) {
       if (!isLiked) {
         let rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/wishlist/addToWishlist",
+          "https://backend-nectaar-app.herokuapp.com/wishlist/addToWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -129,7 +127,7 @@ const [fontsLoaded] = Font.useFonts({
         }
       } else {
         let rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/wishlist/deleteFromWishlist",
+          "https://backend-nectaar-app.herokuapp.com/wishlist/deleteFromWishlist",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -148,7 +146,7 @@ const [fontsLoaded] = Font.useFonts({
     if (props.displayToken) {
       if (props.user.ticketsRemaining > counter) {
         var rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/events/addReservation",
+          "https://backend-nectaar-app.herokuapp.com/events/addReservation",
           {
             method: "post",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -352,12 +350,12 @@ const [fontsLoaded] = Font.useFonts({
                         <Text>
                           {" "}
                           Vous avez {props.user.ticketsRemaining} tickets
-                          restants           
+                          restants
                         </Text>
                       )}
 
                       <Text style={[styles.paragraph, { marginVertical: 20 }]}>
-                      {'\n'}Il reste {remain} places disponibles
+                        {"\n"}Il reste {remain} places disponibles
                       </Text>
                     </Text>
                   ) : (

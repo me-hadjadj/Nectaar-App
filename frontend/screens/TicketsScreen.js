@@ -18,10 +18,8 @@ LogBox.ignoreLogs(["Warning: ..."]);
 import { Card } from "react-native-paper";
 import { connect } from "react-redux";
 
-
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
-
 
 function TicketsScreen(props) {
   useEffect(() => {
@@ -31,7 +29,7 @@ function TicketsScreen(props) {
       //Fonction qui va récupérer les évènements à venir au lancement du composant
       async function getReservationList() {
         var rawResponse = await fetch(
-          "https://warm-ocean-55850.herokuapp.com/events/getReservationList",
+          "https://backend-nectaar-app.herokuapp.com/events/getReservationList",
           {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },

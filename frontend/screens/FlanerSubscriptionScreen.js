@@ -15,7 +15,7 @@ import { Card } from "react-native-paper";
 import * as Font from "expo-font";
 import AppLoading from "expo-app-loading";
 
-const ip = "warm-ocean-55850.herokuapp.com";
+const ip = "backend-nectaar-app.herokuapp.com";
 
 function FlanerSubscription(props) {
   //Import des polices
@@ -28,14 +28,11 @@ function FlanerSubscription(props) {
   //Fonction qui va sauvegarder le type d'abonnement sur le user en cours
   let saveThisSubscription = async () => {
     let subscriptionTitle = "Flâner";
-    let rawResponse = await fetch(
-      `https://${ip}/users/saveThisSubscription`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `subscriptionTitleFromFront=${subscriptionTitle}&token=${props.token}`,
-      }
-    );
+    let rawResponse = await fetch(`https://${ip}/users/saveThisSubscription`, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `subscriptionTitleFromFront=${subscriptionTitle}&token=${props.token}`,
+    });
     let response = await rawResponse.json();
     if (response.result) {
       props.updateTicketsWithSub(response.user.NumberOfPlacesHave);
